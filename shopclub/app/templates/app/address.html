@@ -1,0 +1,47 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Adress{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+ <h3>Welcome  {{request.user|capfirst}}</h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn ">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn {{active}}">Address</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-9 offset-sm-1">
+   <div class="row">
+   {%if data %}
+    {% for i in data %}
+    <div class="col-sm-6">
+     <div class="card">
+      <div class="card-body">
+       <h3 class=' text-primary'>Address {{i.id}}</h3>
+      
+         
+      
+      <strong> <p>Name:  {{i.name}} </p></strong>
+      <strong> <p>Village:   {{i.locality}}</p></strong>
+     <strong>  <p> City:  {{i.city}}</p></strong>
+       <strong><p>State:   {{i.state}}</p></strong>
+      <strong> <p>zipcode:   {{i.zipcode}}</p></strong>
+      </div>
+     </div>
+    </div>
+      {% endfor %}
+    {% else %}
+    <div class="text-danger col-4">
+    <div class="text-center">
+    <h3>No adress available</h3>
+    {% comment %} <a class="btn btn-primary" href="{% url 'profile' %}"><h4>Add adress</h4></a> {% endcomment %}
+    </div>
+    </div>
+    {% endif %}
+  
+   </div>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

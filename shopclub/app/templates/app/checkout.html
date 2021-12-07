@@ -1,0 +1,78 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row mt-5">
+  <div class="col-sm-6">
+    <h4>Order Summary</h4>
+    {% for i in all %}
+    
+    
+    <hr>
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5>Product: {{i.product}}</h5>
+          <p>Quantity: {{i.quantity}}</p>
+      
+        </div>
+      </div>
+      
+{% endfor %}
+         <hr>
+      <div class="card mb-2">
+        <div class="card-body">
+             <p class="fw-bold text-center text-danger">total payble amont: {{total_amount }}</p>
+      
+        </div>
+      </div>
+    <small>Term and Condition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, ullam saepe! Iure optio repellat dolor velit, minus rem. Facilis cumque neque numquam laboriosam, accusantium adipisci nisi nihil in et quis?</small>
+  </div>
+  <div class="col-sm-4 offset-sm-1">
+    <h4>Select Shipping Address</h4>
+    <h3 class="d-grid text-primary "><a href="{% url 'profile' %}" class="btn"><span class='col-3 text-primary bg-alert-info'> Add New Address</span></a></h3>
+    {% for i in add  %}
+    
+    
+
+    <hr>
+    <form action="/paymentdone">
+      <div class="card">
+        <div class="card-body">
+        <h5>{{i.name}}</h5>
+        <p>{{i.locality}}</p>
+        </div>
+      </div>
+        <div class="form-check mt-2 mb-5">
+          <input class="form-check-input" type="radio" name='custid'id='custadd{{forloop.counter}}' value="{{i.id}}">
+          <label class="form-check-label " for="flexSwitchCheckDefault">
+            Address: {{forloop.counter}} </label>
+        </div>
+      
+        
+            {% endfor %}
+            <span><h2>Payment Mode </h2></span>
+            <br><b>
+           <div class="form-check form-switch">
+  <input class="form-check-input " type="radio"  id="flexSwitchCheckDefault" checked disabled>
+  <label class="form-check-label  text-danger"  value="yes"required for="flexSwitchCheckDefault"><strong>Cass On Delevery</strong></label>
+</div>
+
+    <div class="form-check form-switch">
+  <input class="form-check-input" type="radio"  id="flexSwitchCheckDefault"  disabled>
+  <label class="form-check-label "  value="yes"required for="flexSwitchCheckDefault"><strong>Pay Online</strong></label>
+</div></b>
+        </div>
+   
+        <div class="text-end">/
+          <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
+        </div>
+      </form>
+    </div>
+
+
+
+
+  </div>
+</div>
+{% endblock main-content %}

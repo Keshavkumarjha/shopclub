@@ -1,0 +1,55 @@
+{% extends 'app/base.html' %}
+ {% load static %}
+  {% block title %}Buy Now{%endblock title %}
+
+ {% block main-content %}
+<div class="container my-5">
+  <div class="row">
+    {% comment %} <h3>Welcome {{request.user}}</h3>
+    <div class="col-sm-2 border-end">
+      <ul class="list-unstyled">
+        <li class="d-grid">
+          <a href="{% url 'orders' %}" class="btn btn-primary">Orders</a>
+         
+        </li>
+      </ul>
+    </div> {% endcomment %}
+
+    
+
+
+
+{% for i in all  %}
+
+
+    <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+    <a href=""> <div class="col-sm-6 text-center align-self-center">
+  <img src="{{i.product.product_image.url}}" alt="product image " class="img-fluid img-thumbnail">
+  
+  </div>
+  </a>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"> Product name:{{i.product}}</h5>
+        <p class="card-title text-mute">Quantity: {{i.quantity}}</p>
+        <p class="card-title"> Ordered_date: {{i.ordered_date}}</p>
+        <br>
+        
+            <h5 class="card-title text-success"> Status: {{i.status}} </h5>
+    
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endfor %}
+</div>
+</div>
+
+ {% endblock main-content %}

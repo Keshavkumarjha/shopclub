@@ -1,0 +1,51 @@
+{% extends 'app/base.html' %}
+ {% load static %} 
+ {% block title %}Top Wear{% endblock title %} 
+{% block main-content %}
+ {% comment %} <div class="container col-6 bg-alert-primary py-6">
+<div class="text-center">
+{{mob}}</div></div> {% endcomment %}
+
+
+
+
+
+
+<div class="container my-5">
+ <strong><h1 class="text-center  "><span class=''>Laptops</span></h1></strong>
+<br>
+ <div class="row">
+ {% if laptops %}
+  {% for bw in laptops %} 
+  <div class="col-sm-3">
+   <div class="card mb-3">
+     <div class="card-body">
+     <a href="{% url 'product-detail' bw.id %}" class="btn">
+            <div class="item">
+              <img
+                src="{{bw.product_image.url}}"
+                alt="image"
+                class=""
+                height="200px"
+              >
+              <span class="fw-bold ">{{bw.title}}</span>
+              <br /><span class="fs-5 ">{{bw.discounted_price}}</span>
+            </div>
+            </a>
+     </div>
+   </div>
+  </div>
+   {% endfor %}
+     {% else %}
+  <div class="container col-3 alert-info text-center">
+  <span class=""><h2>No Laptop Available</h2></span>
+  </div>
+  
+  {% endif %}
+  </div>
+  </div> 
+
+
+
+
+{% endblock main-content %}

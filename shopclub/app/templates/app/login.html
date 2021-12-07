@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Login</h3>
+   <hr>
+
+
+
+ 
+
+<div class="container col-4 bg-succes">
+   {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} {{ message.tags }}{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+
+   <form action="" method="post" novalidate class="shadow p-5 text-end alert-secondary">
+    {% csrf_token %}
+    <div class="mb-3">
+   <div> Username:{{ form.username }}</div><br>
+   <div> Password:{{ form.password }}</div>
+    <small><a href="#">Forgot Password ?</a></small> <br>
+    <input type="submit" class="btn btn-primary mt-4" value="Login">
+    <br><br>
+    <div class="text-end text-primary fw-bold"><small>New to shopclub ? <a href="{% url 'registration' %}"
+       class="text-danger">Create an Account</a> </small></div>
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

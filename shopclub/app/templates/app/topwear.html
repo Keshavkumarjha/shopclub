@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+ {% load static %} 
+ {% block title %}Top Wear{% endblock title %} 
+{% block main-content %}
+
+
+
+
+
+
+
+
+<div class="container my-5">
+ <strong><h1 class="text-center  "><span class=''>Top Wears</span></h1></strong>
+<br>
+ <div class="row">
+  {% for bw in topwears %} 
+  <div class="col-sm-3">
+   <div class="card mb-3">
+     <div class="card-body">
+     <a href="{% url 'product-detail' bw.id %}" class="btn">
+            <div class="item">
+              <img
+                src="{{bw.product_image.url}}"
+                alt="image"
+                class=""
+                height="200px"
+              ><br>
+              <span class="fw-bold "> {{bw.title}}</span>
+              <br /><span class="fs-5 ">Price: {{bw.discounted_price}}</span>
+            </div>
+            </a>
+     </div>
+   </div>
+  </div>
+   {% endfor %}
+  </div>
+  </div>
+
+
+{% endblock main-content %}
